@@ -15,8 +15,6 @@ GPIO.setmode(GPIO.BCM)
 # 20     07
 # 21     08
 
-# initiate list with pin gpio pin numbers
-
 # gpio_list = [26, 19, 13, 06, 12, 16, 20, 21]
 gpio_list = [06, 13, 19, 26, 12, 16, 20, 21]
 
@@ -24,24 +22,10 @@ for i in gpio_list:
     GPIO.setup(i, GPIO.OUT)
     GPIO.output(i, GPIO.HIGH)
 
-# Sleep time variables
+# run through each relay in order from 1 to 8
+for i in gpio_list:
+    GPIO.output(i, GPIO.LOW)
+    GPIO.output(i, GPIO.HIGH)
+    time.sleep(1)
 
-sleep_time_short = 0.2
-sleep_time_long = 0.1
-
-# MAIN LOOP =====
-# ===============
-
-try:
-    for i in gpio_list:
-        GPIO.output(i, GPIO.LOW)
-        time.sleep(sleep_time_short)
-        GPIO.output(i, GPIO.HIGH)
-        time.sleep(sleep_time_long)
-        time.sleep(2)
-except KeyboardInterrupt:
-    print "Ending and cleaning up.."
-
-    # Reset GPIO settings
-    GPIO.cleanup()
-    print "Done."
+GPIO.cleanup()
