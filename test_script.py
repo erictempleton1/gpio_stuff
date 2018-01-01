@@ -2,22 +2,8 @@
 import RPi.GPIO as GPIO
 import time
 
+
 GPIO.setmode(GPIO.BCM)
-
-# GPIO | Relay
-#--------------
-# 06     01
-# 19     02
-# 13     03
-# 06     04
-# 12     05
-# 16     06
-# 20     07
-# 21     08
-
-# initiate list with pin gpio pin numbers
-
-# gpio_list = [06, 13, 19, 26, 12, 16, 20, 21]
 
 # (relay number, gpio pin)
 gpio_map = [
