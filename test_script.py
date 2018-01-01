@@ -19,6 +19,7 @@ GPIO.setmode(GPIO.BCM)
 
 # gpio_list = [06, 13, 19, 26, 12, 16, 20, 21]
 
+# (relay number, gpio pin)
 gpio_map = [
     ("01", 06), 
     ("02", 13), 
@@ -30,11 +31,11 @@ gpio_map = [
     ("08", 21)
 ]
 
-for relay_num, gpio_pin in gpio_list:
+for relay_num, gpio_pin in gpio_map:
     GPIO.setup(gpio_pin, GPIO.OUT)
     GPIO.output(gpio_pin, GPIO.HIGH)
 
-for relay_num, gpio_pin in gpio_list:
+for relay_num, gpio_pin in gpio_map:
     print "relay:", relay_num, "gpio: ", gpio_pin
     GPIO.output(gpio_pin, GPIO.LOW)
     time.sleep(0.2)
